@@ -58,7 +58,8 @@ The JWT principals are universal and therefore independant from the database tha
 Now we wanna train the big final: a fullstack authentication flow!
 
 - setup CORS in your backend, so you can receive data + cookies from the frontend: 
-  - `app.use( cors( { origin: 'http://localhost:3000', credentials: true ) )`
+  - `app.use( cors( { origin: 'http://localhost:3000', credentials: true }) )`
+  - the CORS standard does NOT allow that cookies are sent from EVERY frontend. Therefore we explicitly need to whitelist the frontend domain (=origin)
 
 - create a React app into a subfolder: `npx create-react-app client` 
 - go into the folder and install axios: `npm install axios`
