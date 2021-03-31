@@ -8,7 +8,7 @@ This visitor card will help us to identify the user on future calls.
 
 We also wanna setup a route with protected information. And finally place an security guard (=authentication middleware) "in front of it's door", so that only authenticated users can access that route.
 
-The JWT prinicapls are universal and therefore independant from the database that we use under the hood. In this exercise we will focus on the auth flow (without any database or mongoose) to train this workflow. 
+The JWT principals are universal and therefore independant from the database that we use under the hood. In this exercise we will focus on the auth flow (without any database or mongoose) to train this workflow. 
 
 ## Let's get into it...
 
