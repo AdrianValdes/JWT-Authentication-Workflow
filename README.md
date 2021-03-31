@@ -59,7 +59,7 @@ Now we wanna train the big final: a fullstack authentication flow!
   - `app.use( cors( { origin: 'http://localhost:3000', credentials: true ) )`
 
 - create a React app into a subfolder: `npx create-react-app client` 
-- go into the folder an install axios: `npm install axios`
+- go into the folder and install axios: `npm install axios`
 
 - create a login form component and import it into App.js
   - provide two input fields: username & password
@@ -78,12 +78,12 @@ Now we wanna train the big final: a fullstack authentication flow!
   - create an array of users with useState([...])
   - create a useEffect hook
   - import axios
-  - in the effect hook: fetch the users from the backend (route GET /users) using Axios
     - set an axios baseUrl after import
       - `axios.defaults.baseURL = 'http://localhost:5000'`
       - `axios.default.withCredentials = true` 
       - // axios will now attach cookies automatically to every call to the backend
      - tired of configuration axios in each component again? You might wanna outsource all your axios calls to a separate file now :) but it's not a must here
+  - in the effect hook: fetch the users from the backend (route GET /users) using Axios
     - display the returned user list in your JSX (use map to displa)
     - also display any returned error
 
