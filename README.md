@@ -66,7 +66,7 @@ Now we wanna train the big final: a fullstack authentication flow!
   - import axios here
   - set an axios baseUrl after import
     - `axios.defaults.baseURL = 'http://localhost:5000'`
-    - `axios.default.withCredentials = true` 
+    - `axios.defaults.withCredentials = true` 
       - // axios will now attach cookies automatically to every call to the backend
   
   - add a submit handler "handleLogin"
