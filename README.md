@@ -35,7 +35,9 @@ The JWT principals are universal and therefore independant from the database tha
   - console.log the received cookies. Hint: All received cookies are in the object `req.cookies` (the cookie parser will do this)
   - check for existence of the key "token" in the cookies object
   - if no token was found in cookies: reject the call calling next(error)
-  - if the token was found: let the user pass with `next()`
+  - verify the cookie (do not forget the try...catch around jwt.verify())
+  - in case the token is invalid: reject the call calling next(error) 
+  - if the token is valid: let the user pass with `next()`
 
 - attach the "auth" middleware as "security guard" to your users route: `app.get('/users', auth, (req, res, next) => {...}`
   - now this route should be protected to authenticated users only!
@@ -47,7 +49,7 @@ The JWT principals are universal and therefore independant from the database tha
   - call the GET route /users
    - here you should receive an error that you are not allowed to do this
   - call now the POST route /login with valid username & password
-  - check if you received back the cookie in the response (inspect > tab "Application" > "Cookies")
+  - check if you received back the cookie in the response (in the right response window > Tab "Cookies")
   - now try to call the route /users again!
    - now you should receive the information about all users!
 
