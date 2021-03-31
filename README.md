@@ -80,7 +80,7 @@ Now we wanna train the big final: a fullstack authentication flow!
   - import axios
     - set an axios baseUrl after import
       - `axios.defaults.baseURL = 'http://localhost:5000'`
-      - `axios.default.withCredentials = true` 
+      - `axios.defaults.withCredentials = true` 
       - // axios will now attach cookies automatically to every call to the backend
      - tired of configuration axios in each component again? You might wanna outsource all your axios calls to a separate file now :) but it's not a must here
   - in the effect hook: fetch the users from the backend (route GET /users) using Axios
