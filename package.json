@@ -1,0 +1,26 @@
+{
+  "name": "ds-06-tokens-and-cookies",
+  "version": "1.0.0",
+  "description": "In this exercise we wanna train to create and verify tokens (=visitor cards) after someone successfully logs into our API.",
+  "main": "server.js",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FbW36/ds-06-tokens-and-cookies.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FbW36/ds-06-tokens-and-cookies/issues"
+  },
+  "homepage": "https://github.com/FbW36/ds-06-tokens-and-cookies#readme"
+}
