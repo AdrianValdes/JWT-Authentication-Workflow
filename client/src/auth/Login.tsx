@@ -1,5 +1,5 @@
 import React, { FormEvent, useReducer, useState } from 'react';
-import { axiosInstance as axios } from '../axios/axiosConfig';
+import { axiosInstance as axios } from '../axios';
 
 interface User {
   username: string;
