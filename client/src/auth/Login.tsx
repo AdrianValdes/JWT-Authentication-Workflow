@@ -1,23 +1,22 @@
-import React, { FormEvent, useReducer } from 'react';
-import axios from 'axios';
+import React, { FormEvent, useReducer, useState } from 'react';
+import { axiosInstance as axios } from '../axios/axiosConfig';
 
-axios.defaults.baseURL = 'http://localhost:5000';
-axios.defaults.withCredentials = true;
+interface User {
+  username: string;
+  error: string | null;
+}
 
 type InitialState = {
-  username: string;
-  password: string;
+  user: undefined | string;
   error: null | string;
 };
 
 type ActionType =
-  | { type: 'username'; payload: string }
-  | { type: 'password'; payload: string }
+  | { type: 'user'; payload: string }
   | { type: 'error'; payload: string | null };
 
 const initialState: InitialState = {
-  username: '',
-  password: '',
+  user: undefined,
   error: null,
 };
 
@@ -26,10 +25,8 @@ const userReducer = (
   { type, payload }: ActionType
 ) => {
   switch (type) {
-    case 'username':
-      return { ...state, username: payload! };
-    case 'password':
-      return { ...state, password: payload! };
+    case 'user':
+      return { ...state, error: null, user: payload! };
     case 'error':
       return { ...state, error: payload };
     default:
@@ -39,14 +36,22 @@ const userReducer = (
 
 export const Login = () => {
   const [auth, dispatch] = useReducer(userReducer, initialState);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
-      const { data } = await axios.post('/login', { ...auth });
+      const { data } = await axios.post<User>('/login', {
+        username,
+        password,
+      });
+
       if (data.error) {
         dispatch({ type: 'error', payload: data.error });
+      } else {
+        dispatch({ type: 'user', payload: data.username });
       }
     } catch (err) {
       dispatch({ type: 'error', payload: err.error });
@@ -62,9 +67,7 @@ export const Login = () => {
           <input
             type='text'
             name='username'
-            onChange={(e) =>
-              dispatch({ type: 'username', payload: e.target.value })
-            }
+            onChange={(e) => setUsername(e.target.value)}
           />
         </div>
         <div>
@@ -72,9 +75,7 @@ export const Login = () => {
           <input
             name='password'
             type='password'
-            onChange={(e) => {
-              dispatch({ type: 'password', payload: e.target.value });
-            }}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         <input type='submit' />
