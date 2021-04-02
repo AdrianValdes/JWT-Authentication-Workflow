@@ -2,10 +2,12 @@ const express = require('express');
 const app = express();
 const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
+const cors = require('cors');
 const PORT = 5000;
 
 const JWT_SECRET = 'coolBeans2020';
 
+app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
 
@@ -39,7 +41,6 @@ const auth = (req, res, next) => {
 
 app.post('/login', (req, res, next) => {
   const { username, password } = req.body;
-
   const userExists = users.find(
     (user) => user.username === username && user.password === password
   );
