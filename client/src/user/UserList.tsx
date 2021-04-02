@@ -26,10 +26,9 @@ export const UserList = () => {
   return (
     <div>
       <ul>
-        {users &&
-          users.map(({ username, _id }: User) => (
-            <UserItem key={_id} username={username} _id={_id} />
-          ))}
+        {users.map(({ username, _id }) => (
+          <UserItem key={_id} username={username} _id={_id} />
+        ))}
       </ul>
       {error && <p>{error}</p>}
     </div>

@@ -1,4 +1,5 @@
 import React, { FormEvent, useReducer, useState } from 'react';
+import { Redirect } from 'react-router';
 import { axiosInstance as axios } from '../axios';
 
 interface User {
@@ -38,6 +39,10 @@ export const Login = () => {
   const [auth, dispatch] = useReducer(userReducer, initialState);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  if (auth.user) {
+    return <Redirect to='users' />;
+  }
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
